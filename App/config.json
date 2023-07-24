@@ -1,4 +1,5 @@
 {
+    "host": "localhost",
     "name": "monBonCoin",
     "dbName": "monboncoin",
     "user": "root",
