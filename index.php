@@ -3,6 +3,9 @@
 
 use App\Db;
 use Models\Users;
+use Models\Categories;
+
+
 
 require_once('autoloader.php');
 
@@ -50,7 +53,7 @@ $user = Users::findByLogin($login);
 var_dump($user);
 ?>
 
-<h2>Utilisation de la méthode de findByLogin sur users</h2>
+<h2>Utilisation de la méthode de create()sur users</h2>
 <?php
 $pass = password_hash('123456789',PASSWORD_DEFAULT);
 $data = [ 'maraimaesouare11@gmail.com', $pass, 'mariame' , 'souare', '21 avenue des syvris',
@@ -58,4 +61,27 @@ $data = [ 'maraimaesouare11@gmail.com', $pass, 'mariame' , 'souare', '21 avenue 
 // Users::create($data);
 // Users::update($data);
 Users::delete($data);
+?>
+
+<h2>Test de la méthode findAll sur catégories</h2>
+<?php
+    $categories = Categories::findAll();
+    var_dump($categories);
+?>
+<h2>Test de la méthode findById sur catégories</h2>
+<?php
+    $categories = Categories::findById(6);
+    var_dump($categories);
+?>
+<h2>Test de la méthode create sur catégories</h2>
+<?php
+    // $categories = Categories::create("non classé");   
+?>
+<h2>Test de la méthode update sur catégories</h2>
+<?php
+    // $categories = Categories::update("non classée",1);   
+?>
+<h2>Test de la méthode delete sur catégories</h2>
+<?php
+    // $categories = Categories::delete(1);   
 ?>
