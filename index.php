@@ -3,7 +3,10 @@
 
 use App\Db;
 use Models\Users;
+use Models\Products;
 use Models\Categories;
+
+
 
 
 
@@ -84,4 +87,40 @@ Users::delete($data);
 <h2>Test de la méthode delete sur catégories</h2>
 <?php
     // $categories = Categories::delete(1);   
+?>
+<h2>Test de la méthode findAll sur products</h2>
+<?php
+//    $products = Products::findAll(null ,1);
+//    var_dump($products);   
+// ?>
+<h2>Test de la méthode findById sur products</h2>
+<?php
+$products = Products::findById(2);
+var_dump($products);
+?>
+<h2>Test de la méthode findByUser sur products</h2>
+<?php
+$products = Products::findByUser(3);
+var_dump($products);
+?>
+<h2>Test de la méthode findByCatégories sur products</h2>
+<?php
+$products = Products::findByCat(7);
+var_dump($products);
+?>
+<h2>Test de la méthode create sur products</h2>
+<?php
+   
+   $data = [ 8,3, 'iphone' , 'le tout dernier', 1200, 'iphone.jpg'];
+//    Products::create($data);
+?>
+<h2>Test de la méthode update sur products</h2>
+<?php
+   
+   $data = [ 8,3, 'iphone' , 'le tout dernier', 1500, 'iphone.jpg',3];
+//    Products::update($data);
+?>
+<h2>Test de la méthode delete sur products</h2>
+<?php
+    $id = Products::delete(5);   
 ?>
