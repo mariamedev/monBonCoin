@@ -15,9 +15,9 @@ class Db{
         if (!self::$db) {
             try {
                 //chemin vers config.json depuis le dossier public
-                // $config = file_get_contents('../App/config.json');
+                $config = file_get_contents('../App/config.json');
                 //chemin vers config.json depuis le dossier racine
-              $config = file_get_contents('App/config.json');
+            //   $config = file_get_contents('App/config.json');
                 // var_dump($config);
                 //pour pouvoir utliliser un fichier json il faut le decoder
                 $config = json_decode($config);

@@ -11,13 +11,13 @@ class Products extends Db{
     // tous les produits
     public static function findAll($order=null, $limit = null){
         //pour récupérer le nom des ctaegories on doit faire une jointure
-        $request = "SELECT *, products.title AS productsTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory";
+        $request = "SELECT *, products.title AS productTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory";
         //on voudrait pouvoir ordonner les réponse par prix
         // if ($order) {
         //     $request .= " ORDER BY price $order";
         // }
         //meme chose en ternaire
-        $order ? $request .= " ORDER BY price $order" : null ;
+        $order ? $request .= " ORDER BY  $order" : null ;
         $limit ? $request .= " LIMIT $limit" : null;
         $response = self::getDb()->prepare($request);
         $response->execute();
@@ -27,7 +27,7 @@ class Products extends Db{
     }
     //produit par son id
     public static function findById($id){
-        $request = "SELECT *, products.title AS productsTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE idProduct = :id";
+        $request = "SELECT *, products.title AS productTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE idProduct = :id";
         $response = self::getDb()->prepare($request);
         $response->bindValue(':id', $id, PDO::PARAM_INT);
         $response->execute();
@@ -36,7 +36,7 @@ class Products extends Db{
     }
     // les produits d'un user
     public static function findByUser($idUser){
-        $request = "SELECT *, products.title AS productsTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE idUser = :idUser";
+        $request = "SELECT *, products.title AS productTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE idUser = :idUser";
         $response = self::getDb()->prepare($request);
         $response->bindValue(':idUser', $idUser, PDO::PARAM_INT);
         $response->execute();
@@ -45,9 +45,9 @@ class Products extends Db{
     }
     // les produits d'une catégories
     public static function findByCat($idCategory, $order = null){
-        $request = "SELECT *, products.title AS productsTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE products.idCategory = :idCategory";
+        $request = "SELECT *, products.title AS productTitle , categories.title AS catTitle  FROM products INNER JOIN categories ON products.idCategory = categories.idCategory WHERE products.idCategory = :idCategory";
         //attention l champs idcategories est present dans les deux tables donc il faut preciser le nom de la table dans le WHERE
-        $order ? $request .= " ORDER BY price $order" : null ;
+        $order ? $request .= " ORDER BY  $order" : null ;
         $response = self::getDb()->prepare($request);
         $response->bindValue(':idCategory', $idCategory, PDO::PARAM_INT);
         $response->execute();

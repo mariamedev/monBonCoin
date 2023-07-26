@@ -1,9 +1,47 @@
 <?php
+
 namespace Controllers;
 
-class Products{
-    public static function accueil(){
-        echo "vous êtes dans la méthode accueil";
-        
+
+
+class Products extends Controller{
+    public static function accueil()
+    {
+        // echo "vous êtes dans la méthode accueil";
+
+        //on fait appelle à la méthode findAll du model Products pour récupéerer les produits
+        $products = \Models\Products::findAll("date DESC", 2);
+        //on utilise la méthode render du controller principak=le pour afficher la bonne vue avec les bonnes infos
+
+        self::render('products/accueil', [
+            'title' => 'Les deux derniers produits',
+            'products' => $products
+        ]);
+    }
+    //méthode pour récupere un produit par son id et l'envoyerà la vue détailproduct
+    public static function detailProduct()
+    {
+        // je creer une variable pour stocker les erreurs potentielles
+        $err = "";
+        if (isset($_GET['id'])) {
+            $idProduct = $_GET['id'];
+            // echo $idProduct;
+            $product = \Models\Products::findById($idProduct);
+            $err = !$product ? " le produit n'existe pas " : null;
+            // echo $err;
+            //Apprès avoir réu=cupéré le produit je récupère le user propriétaire du produit 
+            //pour pouvoir utiliser son adresse
+            $idUser = $product['idUser'];
+            $userProduct = \Models\Users::findById($idUser);
+
+
+            //j'utlise le render
+            self::render('products/detailProduct', [
+                'title' => "detail du produit",
+                'product' => $product,
+                'user' => $userProduct,
+                'erreur' => $err
+            ]);
+        }
     }
 }
