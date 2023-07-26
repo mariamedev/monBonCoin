@@ -4,7 +4,8 @@ namespace Controllers;
 
 
 
-class Products extends Controller{
+class Products extends Controller
+{
     public static function accueil()
     {
         // echo "vous êtes dans la méthode accueil";
@@ -45,13 +46,24 @@ class Products extends Controller{
         }
     }
     //méthode qui gère la récuperation et l'affichage de tous les produits
-    public static function AffichageProducts(){
-        $products = \Models\Products::findAll();
+    public static function AffichageProducts()
+    {
+        //pour mon formulaire de tri,je récupère toutes les catégories
+        $categories = \Models\Categories::findAll();
+
+        //je recupère tous les produits avec ou sans filtre
+        if (isset($_GET['idCat']) && $_GET['idCat'] != ""){
+            $idCat = $_GET['idCat'];
+            $products = \Models\Products::findByCat($idCat);
+        } else {
+            $products = \Models\Products::findAll();
+        }
 
         //j'utilise render() pour envoyer est produit à la bonne vue
-        self::render('products/accueil',[
-            'title' => 'tout les produits de Mon Bon Coin',
-            'products' => $products
+        self::render('products/accueil', [
+            'title' => 'Tout les produits de Mon Bon Coin',
+            'products' => $products,
+            'categories' => $categories
         ]);
     }
 }
