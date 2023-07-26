@@ -6,7 +6,7 @@
             <label for="cat">Trier par catégorie</label>
             <select name="cat" id="cat" >
                 <!-- ici boucle pour générer les options (les catégories) -->
-                <option value=""></option>
+                
             </select>
             <button type="submit">Valider</button>
         </form>
