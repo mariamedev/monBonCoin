@@ -44,4 +44,14 @@ class Products extends Controller{
             ]);
         }
     }
+    //méthode qui gère la récuperation et l'affichage de tous les produits
+    public static function AffichageProducts(){
+        $products = \Models\Products::findAll();
+
+        //j'utilise render() pour envoyer est produit à la bonne vue
+        self::render('products/accueil',[
+            'title' => 'tout les produits de Mon Bon Coin',
+            'products' => $products
+        ]);
+    }
 }

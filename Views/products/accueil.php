@@ -1,6 +1,16 @@
 <?php var_dump($products) ?>
 
 <div class="container border border-secondary p-5">
+    <div class="container">
+        <form action="" method="GET">
+            <label for="cat">Trier par catégorie</label>
+            <select name="cat" id="cat" >
+                <!-- ici boucle pour générer les options (les catégories) -->
+                <option value=""></option>
+            </select>
+            <button type="submit">Valider</button>
+        </form>
+    </div>
     <div class="row justify-content-around">
         <?php foreach ($products as $product) : ?>
             <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
