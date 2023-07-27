@@ -63,7 +63,7 @@ $data = [ 'maraimaesouare11@gmail.com', $pass, 'mariame' , 'souare', '21 avenue 
 '94000', 'créteil', 3];
 // Users::create($data);
 // Users::update($data);
-Users::delete($data);
+// Users::delete($data);
 ?>
 
 <h2>Test de la méthode findAll sur catégories</h2>

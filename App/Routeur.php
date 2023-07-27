@@ -12,7 +12,8 @@ class Routeur{
             '/ajoutProduct' => ['controller' => 'Products', 'action' => 'ajoutProduct'],
             '/modifProduct' => ['controller' => 'Products', 'action' => 'modifProduct'],
             '/suppProduct' => ['controller' => 'Products', 'action' => 'suppProduct'],
-            '/panier' => ['controller' => 'panier', 'action' => 'gestionPanier']
+            '/panier' => ['controller' => 'panier', 'action' => 'gestionPanier'],
+            '/profil' => ['controller' => 'Users', 'action' => 'profil']
         ];
     
     //je creer un methode app qui est le méthode centrale 
