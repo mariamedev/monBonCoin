@@ -1,4 +1,4 @@
-<?php var_dump($products) ?>
+<!-- <?php var_dump($products) ?> -->
 
 <div class="container border border-secondary p-5">
     <?php if(isset($categories)) :?>

@@ -21,6 +21,11 @@
           <a class="nav-link" href="/products">Les Produits</a>
         </li>
       </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item mx-5">
+          <a class="btn btn-info" href="/connexion">connexion</a>
+        </li>
+      </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
