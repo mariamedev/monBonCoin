@@ -17,5 +17,12 @@ class Controller{
         require_once('../Views/layout.php');
     }
 
-    
+    //Méthode de sécurisation des champs de formulaire
+    public static function security(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            foreach ($_POST as $key => $value) {
+               $_POST[$key] = htmlspecialchars(trim($value));
+            }
+        }
+    }
 }

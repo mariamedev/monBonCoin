@@ -42,7 +42,7 @@ class Users extends Db{
         //syntaxe sans les binValue utilisation du "?"
         //avec cette $data doit etre un tableau qui contient toutes les valeurs à enregister en BDD
         
-        $request = "INSERT INTO users (login, password, firstName, lastName, adress, cp, city)
+        $request = "INSERT INTO users (login, password, firstName, lastName, address, cp, city)
         VALUES (?,?,?,?,?,?,?)";
         $reponse = self::getDb()->prepare($request);
         return   $reponse->execute($data);
