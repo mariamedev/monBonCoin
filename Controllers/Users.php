@@ -29,6 +29,7 @@ class Users extends Controller
                         'id' => $user['idUser'],
                         'firstName' => $user['firstName']
                     ];
+                    session_write_close();
                     //Quand l'utilisateur est connecté on le redirige vers la route de notre choix
                     header('Location: /');
                 } else {
@@ -93,6 +94,7 @@ class Users extends Controller
               //on enregistre en BDD
               \Models\Users::create($dataUser);
               $_SESSION['message'] = "Votre compte à été bien crée, vous pouvez vous connecter";
+              session_write_close();
               header('Location: /connexion');
             }else {
                 $errMsg = "Les deux mots de passe sont différents ou ne contennent pas 8 caractère";
@@ -108,9 +110,18 @@ class Users extends Controller
     }
 
     public static function profil(){
-        
+        //je récupère tous  les produits de l'utilisateur connecté ou tous les produits si l'admin est connecté
+        //je commence par tester si le user est admin ou nom
+        if ($_SESSION['user']['role'] == 1) { //je suis admin donc je recupère tous les produits
+            $products = \Models\Products::findAll();
+        }else {
+            $idUser = $_SESSION['user']['id'];
+            $products = \Models\Products::findByUser($idUser);
+
+        }
         self::render('users/profil',[
-            'title' => 'Votre profil utilisateur'
+            'title' => 'Votre profil utilisateur',
+            'products' => $products
         ]);
     }
 }

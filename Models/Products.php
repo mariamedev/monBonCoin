@@ -59,14 +59,14 @@ class Products extends Db{
     public static function create(array $data){
         $request = "INSERT INTO products (idCategory , idUser, title, description, price, image)
         VALUES (?,?,?,?,?,?)";
-        $reponse = self::getDb()->prepare($request);
-        return $reponse->execute($data);
+        $response = self::getDb()->prepare($request);
+        return $response->execute($data);
     }
     // 2/ Update
     public static function update(array $data){
         $request = "UPDATE products SET idCategory = ?, idUser = ?, title = ?, description = ?, price = ?, image = ?  WHERE idProduct = ?" ;
-        $reponse = self::getDb()->prepare($request);
-        return $reponse->execute($data);
+        $response = self::getDb()->prepare($request);
+        return $response->execute($data);
     }
      // 3/DELETE
      public static function delete( $id){
