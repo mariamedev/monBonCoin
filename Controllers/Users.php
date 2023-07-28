@@ -26,7 +26,7 @@ class Users extends Controller
                     $_SESSION['message'] = "Salut, content de vous revoir";
                     $_SESSION['user'] = [
                         'role' => $user['role'],
-                        'id' => $user['isUser'],
+                        'id' => $user['idUser'],
                         'firstName' => $user['firstName']
                     ];
                     //Quand l'utilisateur est connecté on le redirige vers la route de notre choix
@@ -104,6 +104,13 @@ class Users extends Controller
         self::render('users/inscription', [
             'title' => 'Merci de remplir le formualire pour vous inscrire',
             'erreurMessage' => $errMsg
+        ]);
+    }
+
+    public static function profil(){
+        
+        self::render('users/profil',[
+            'title' => 'Votre profil utilisateur'
         ]);
     }
 }

@@ -1,5 +1,5 @@
-<!-- <?php var_dump($products) ?> -->
-<!-- <?php var_dump($categories) ?> -->
+ <!-- <?php var_dump($products) ?> 
+ <?php var_dump($categories) ?>  -->
 
 
 
